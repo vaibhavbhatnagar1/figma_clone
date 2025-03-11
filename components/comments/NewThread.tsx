@@ -30,11 +30,7 @@ export const NewThread = ({ children }: Props) => {
     "placing" | "placed" | "complete"
   >("complete");
 
-  /**
-   * We're using the useCreateThread hook to create a new thread.
-   *
-   * useCreateThread: https://liveblocks.io/docs/api-reference/liveblocks-react#useCreateThread
-   */
+  
   const createThread = useCreateThread();
 
   // get the max z-index of a thread
@@ -170,12 +166,10 @@ export const NewThread = ({ children }: Props) => {
         return;
       }
 
-      // Set coords relative to the top left of your canvas
       const { top, left } = overlayPanel.getBoundingClientRect();
       const x = composerCoords.x - left;
       const y = composerCoords.y - top;
 
-      // create a new thread with the composer coords and cursor selectors
       createThread({
         body,
         metadata: {
@@ -195,15 +189,7 @@ export const NewThread = ({ children }: Props) => {
 
   return (
     <>
-      {/**
-       * Slot is used to wrap the children of the NewThread component
-       * to allow us to add a click event listener to the children
-       *
-       * Slot: https://www.radix-ui.com/primitives/docs/utilities/slot
-       *
-       * Disclaimer: We don't have to download this package specifically,
-       * it's already included when we install Shadcn
-       */}
+     
       <Slot
         onClick={() =>
           setCreatingCommentState(
